@@ -9,6 +9,8 @@ final class TodoList {
 
   /**
    * Sets and returns a single instance of a TodoList
+   *
+   * @return a TodoList object
    */
   public static function getInstance() {
     if (!isset(self::$instance)) {
@@ -24,6 +26,10 @@ final class TodoList {
 
   /**
    * Adds a new task to the database
+   *
+   * @param $desc a description of the task
+   * @param $due the due datetime for the task
+   * @return true if successful, false otherwise
    */
   public function addTask($desc, $due) {
     $desc = self::$db->real_escape_string($desc);
@@ -54,6 +60,9 @@ final class TodoList {
 
   /**
    * Permanently removes a task from the database
+   *
+   * @param $id the id of the task to remove
+   * @return true if successful, false otherwise
    */
   public function deleteTask($id) {
     $id = self::$db->real_escape_string($id);
@@ -76,6 +85,8 @@ final class TodoList {
 
   /**
    * Returns a list of tasks
+   *
+   * @return the list as a mysqli object
    */
   public function getTasks() {
     $query = "SELECT *
