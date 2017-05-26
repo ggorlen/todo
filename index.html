@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Todo list</title>
+
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <div class="main">
+      <h1 class="title">To do list</h1>
+
+      <form onsubmit="addTask(this);">
+        <table>
+          <tr>
+            <td>
+              Task description
+            </td>
+            <td>
+              Due <span style="font-size: 12px;"><em>(yyyy/mm/dd hh:mm)</em></span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input autofocus name="description" type="text">
+            </td>
+            <td>
+              <input name="due" type="datetime">
+            </td>
+            <td>
+              <input type="submit" value="Add task">
+            </td>
+          </tr>
+        </table>
+      </form>
+      <br>
+
+      <div id="taskcontainer"></div>
+
+    </div>
+
+    <script>
+
+      $(function () {
+        $('form').on('submit', function (e) {
+          e.preventDefault();
+        });
+
+        showTasks();
+      });
+
+      function showTasks() {
+        $.post('show_tasks.php', '', function (response) {
+          document.getElementById('taskcontainer').innerHTML = response;
+        });
+      };
+
+      function deleteTask(element) {
+        $.post('delete_task.php', 'id=' + element.id, function (response) {
+          $(element).closest('tr').hide(200);
+        });
+      };
+
+      function addTask(form) {
+        $.post('add_task.php', $(form).serialize(), function (response) {
+          if (response) showTasks();
+        });
+      };
+
+    </script>
+
+  </body>
+</html>

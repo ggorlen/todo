@@ -1,0 +1,49 @@
+* {
+  font-family: 'Helvetica', sans-serif;
+}
+
+body {
+  font-size: 14px;
+  margin: 20px;
+  width: 95%;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.centered {
+  text-align: center;
+}
+
+.main {
+  width: 600px;
+}
+
+.title {
+  text-shadow: 1px 1px #eee;
+}
+
+#tasks {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#tasks tr {
+  border: 1px solid #999;
+}
+
+#tasks td {
+  padding: 7px;
+  max-width: 300px;
+  word-wrap:break-word;
+}
+
+#tasks th {
+  padding: 7px;
+}
