@@ -1,2 +1,2 @@
 # todo
-A simple to do list template
+A simple to do list

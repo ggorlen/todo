@@ -65,7 +65,10 @@
 
       function addTask(form) {
         $.post('add_task.php', $(form).serialize(), function (response) {
-          if (response) showTasks();
+          if (response) {
+            showTasks();
+            form.reset();
+          }
         });
       };
 
