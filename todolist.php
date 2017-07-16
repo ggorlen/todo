@@ -14,8 +14,8 @@ final class TodoList {
    */
   public static function getInstance() {
     if (!isset(self::$instance)) {
-      include_once('/students/ggorlen/secure/dbvars.php');
-      self::$db = new mysqli('localhost', $dbuser, $dbpass, 'test_todolist');
+      include_once '/students/ggorlen/secure/dbvars_ggorlen.php';
+      self::$db = new mysqli('localhost', $dbuser, $dbpass, $database);
       unset($dbhost, $dbuser, $dbpass, $database);
       if (self::$db) {
         self::$instance = new TodoList();

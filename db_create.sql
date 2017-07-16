@@ -1,6 +1,6 @@
-CREATE DATABASE test_todolist;
+CREATE DATABASE test_ggorlen;
 
-USE test_todolist;
+USE test_ggorlen;
 
 DROP TABLE IF EXISTS tasks;
 
