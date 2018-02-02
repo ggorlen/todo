@@ -15,11 +15,13 @@ final class TodoList {
   public static function getInstance() {
     if (!isset(self::$instance)) {
       include_once '/students/ggorlen/secure/dbvars_ggorlen.php';
-      self::$db = new mysqli('localhost', $dbuser, $dbpass, $database);
+      self::$db = new mysqli($dbhost, $dbuser, $dbpass, $database);
       unset($dbhost, $dbuser, $dbpass, $database);
+
       if (self::$db) {
         self::$instance = new TodoList();
       }
+
       return self::$instance;
     }
   } // end getInstance
@@ -33,6 +35,7 @@ final class TodoList {
    */
   public function addTask($desc, $due) {
     $desc = self::$db->real_escape_string($desc);
+
     if ($due) {
       $due = self::$db->real_escape_string($due);
     }

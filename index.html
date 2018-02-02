@@ -42,6 +42,10 @@
     </div>
 
     <script>
+      
+      "use strict";
+
+      var taskElem = document.getElementById("taskcontainer");
 
       $(function () {
         $('form').on('submit', function (e) {
@@ -53,7 +57,7 @@
 
       function showTasks() {
         $.post('show_tasks.php', '', function (response) {
-          document.getElementById('taskcontainer').innerHTML = response;
+          taskElem.innerHTML = response;
         });
       };
 

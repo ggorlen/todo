@@ -8,7 +8,7 @@ if (isset($_POST) && count($_POST)) {
     $due = $_POST['due'];
 
     if (strlen($due)) {
-      if (preg_match('/^(\d{4})-([01]\d)-(\d{2}) ([0-2][0-6]):([0-5])\d$/', $due, $result)) {
+      if (preg_match('`^(\d{4})[ /-]([01]\d)[ /-](\d{2}) ([0-2][0-6]):([0-5])\d$`', $due, $result)) { // TODO actual date regex
         $year = $result[1];
         $month = $result[2];
         $day = $result[3];
